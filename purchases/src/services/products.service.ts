@@ -14,17 +14,25 @@ export class ProductsService {
     return this.prisma.product.findMany();
   }
 
+  getProductById(id: string) {
+    return this.prisma.product.findUnique({
+      where: {
+        id,
+      },
+    });
+  }
+
   async createProduct({ title }: CreateProductParams) {
     const slug = slugify(title, { lower: true });
 
-    const productsWithSameSlug = await this.prisma.product.findUnique({
+    const productAlreadyExists = await this.prisma.product.findUnique({
       where: {
         slug,
       },
     });
 
-    if (productsWithSameSlug) {
-      throw new Error('There is already a product with this slug');
+    if (productAlreadyExists) {
+      throw new Error('This product already exists');
     }
 
     return this.prisma.product.create({
