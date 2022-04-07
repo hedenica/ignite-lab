@@ -1,7 +1,3 @@
--- AlterTable
-ALTER TABLE "Student" ADD COLUMN     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-ADD COLUMN     "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP;
-
 -- CreateTable
 CREATE TABLE "Course" (
     "id" TEXT NOT NULL,
@@ -18,7 +14,7 @@ CREATE TABLE "Enrollment" (
     "id" TEXT NOT NULL,
     "studentId" TEXT NOT NULL,
     "courseId" TEXT NOT NULL,
-    "cancelledAt" TIMESTAMP(3),
+    "canceledAt" TIMESTAMP(3),
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
